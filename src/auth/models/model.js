@@ -80,11 +80,11 @@ class Model {
   }
 
   async authenticateToken (token) {
-    // console.log('ttttttttttttoken',token);
+    console.log('ttttttttttttoken',token);
     // akjsndlaksnd.34naliendiasnd.3nksabndfw334ng
     try {
       const tokenObject = await jwt.verify(token, SECRET);
-      // console.log('toooooooookenobject',tokenObject);
+      console.log('toooooooookenobject',tokenObject);
       // tokenObject = {username:"mahmoud",iat:91223238}
       
       if (tokenObject.username) {

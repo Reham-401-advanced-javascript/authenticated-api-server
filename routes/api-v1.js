@@ -6,11 +6,11 @@
 const express = require('express');
 const Categories = require('../lib/models/categories/categories-model.js');
 const products = require('../lib/models/products/products-model.js');
+const users = require('../src/auth/models/users-model.js');
 const bearerAuth = require('../src/auth/middleware/bearer.js');
 const permissions = require('../src/auth/middleware/authorize.js');
 const basicAuth = require('../src/auth/middleware/basic.js');
 const oauth = require('../src/auth/middleware/oauth.js');
-const users = require('../src/auth/models/users-model.js');
 const router = express.Router();
 router.param('model', getModel);
 
@@ -120,9 +120,14 @@ function deleteHandler(req, res, next) {
 }
 
 function signup(req,res){
+ console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+
   users
     .saveUser(req.body)
     .then((user) => {
+     console.log('rrrrrrrrrrrrrbbrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+
+      // console.log('mmmm,mmmm',user);
       const token = users.generateToken(user);
       res.json({ token });
     })

@@ -72,27 +72,6 @@ async function getRemoteUserInfo(token) {
   let user = userResponse.body;
   return user;
 }
-// async function getUser(remoteUser) {
-//   console.log('iiiiiiiiiiiiii',remoteUser);
-//   const userRecord = {
-//     username: remoteUser.login,
-//     password: 'Rehaaaam', 
-//   };
-//   console.log('userrecord',userRecord.username);
-//   const user = await users.schema.find({username:userRecord.username});
-//   console.log('uuuuuuuuuuuser',user);
-//   if(user!==[]){
-//     let token = users.generateToken(user);
-//     console.log('1111uuuuser',user,'toooooooooooooken',token);
-//     return [user, token];
-//   }else{
-//     let user = await users.saveUser(userRecord);
-//     let token = users.generateToken(user);
-//     console.log('2222uuuuser',user,'toooooooooooooken',token);
-
-//     return [user, token];
-
-//   }}
 async function getUser(remoteUser) {
   console.log('iiiiiiiiiiiiii',remoteUser);
   const userRecord = {
@@ -100,11 +79,32 @@ async function getUser(remoteUser) {
     password: 'Rehaaaam', 
   };
   console.log('userrecord',userRecord.username);
-  const user = await users.saveUser(userRecord);
+  const user = await users.schema.find({username:userRecord.username});
   console.log('uuuuuuuuuuuser',user);
-  let token = users.generateToken(user);
-  console.log('1111uuuuser',user,'toooooooooooooken',token);
-  return [user, token];
+  if(user!==[]){
+    let token = users.generateToken(user);
+    console.log('1111uuuuser',user,'toooooooooooooken',token);
+    return [user, token];
+  }else{
+    let user = await users.saveUser(userRecord);
+    let token = users.generateToken(user);
+    console.log('2222uuuuser',user,'toooooooooooooken',token);
+
+    return [user, token];
+
+  }}
+// async function getUser(remoteUser) {
+//   console.log('iiiiiiiiiiiiii',remoteUser);
+//   const userRecord = {
+//     username: remoteUser.login,
+//     password: 'Rehaaaam', 
+//   };
+//   console.log('userrecord',userRecord.username);
+//   const user = await users.saveUser(userRecord);
+//   console.log('uuuuuuuuuuuser',user);
+//   let token = users.generateToken(user);
+//   console.log('1111uuuuser',user,'toooooooooooooken',token);
+//   return [user, token];
   
-}
+// }
 

@@ -33,35 +33,36 @@ module.exports = async (req, res, next) => {
   }
 };
 
-// async function exchangeCodeForToken(code) {
-//   console.log('coooooooooooodeiiiiiiiid',CLIENT_ID);
-//   const tokenResponse = await superagent.post(tokenServerUrl).send({
-//     code: code,
-//     client_id: CLIENT_ID,
-//     client_secret: CLIENT_SECRET,
-//     redirect_uri: API_SERVER,
-//     grant_type: 'authorization_code',
-//   });
-//   console.log('toooooooken reeeeees',tokenResponse);
-//   const access_token = tokenResponse.body.access_token;
-//   return access_token;
-// }
-function exchangeCodeForToken(code) {
+async function exchangeCodeForToken(code) {
   console.log('coooooooooooodeiiiiiiiid',CLIENT_ID);
-  return superagent.post(tokenServerUrl).send({
+  const tokenResponse = await superagent.post(tokenServerUrl).send({
     code: code,
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
     redirect_uri: API_SERVER,
     grant_type: 'authorization_code',
-  })
-    .then(tokenResponse => {
-      console.log('toooooooken reeeeees',tokenResponse.body);
-      const access_token = tokenResponse.body.access_token;
-      return access_token;
-    })
-    .catch(e => console.log(e));
+  });
+  console.log('toooooooken reeeeees',tokenResponse);
+  const access_token = tokenResponse.body.access_token;
+  return access_token;
 }
+
+// function exchangeCodeForToken(code) {
+//   console.log('coooooooooooodeiiiiiiiid',CLIENT_ID);
+//   return superagent.post(tokenServerUrl).send({
+//     code: code,
+//     client_id: CLIENT_ID,
+//     client_secret: CLIENT_SECRET,
+//     redirect_uri: API_SERVER,
+//     grant_type: 'authorization_code',
+//   })
+//     .then(tokenResponse => {
+//       console.log('toooooooken reeeeees',tokenResponse.body);
+//       const access_token = tokenResponse.body.access_token;
+//       return access_token;
+//     })
+//     .catch(e => console.log(e));
+// }
 
 async function getRemoteUserInfo(token) {
   let userResponse = await superagent
@@ -71,6 +72,27 @@ async function getRemoteUserInfo(token) {
   let user = userResponse.body;
   return user;
 }
+// async function getUser(remoteUser) {
+//   console.log('iiiiiiiiiiiiii',remoteUser);
+//   const userRecord = {
+//     username: remoteUser.login,
+//     password: 'Rehaaaam', 
+//   };
+//   console.log('userrecord',userRecord.username);
+//   const user = await users.schema.find({username:userRecord.username});
+//   console.log('uuuuuuuuuuuser',user);
+//   if(user!==[]){
+//     let token = users.generateToken(user);
+//     console.log('1111uuuuser',user,'toooooooooooooken',token);
+//     return [user, token];
+//   }else{
+//     let user = await users.saveUser(userRecord);
+//     let token = users.generateToken(user);
+//     console.log('2222uuuuser',user,'toooooooooooooken',token);
+
+//     return [user, token];
+
+//   }}
 async function getUser(remoteUser) {
   console.log('iiiiiiiiiiiiii',remoteUser);
   const userRecord = {
@@ -78,18 +100,11 @@ async function getUser(remoteUser) {
     password: 'Rehaaaam', 
   };
   console.log('userrecord',userRecord.username);
-  const user = await users.schema.find({username:userRecord.username});
+  const user = await users.saveUser(userRecord);
   console.log('uuuuuuuuuuuser',user);
-  if(user!==[]){
-    let token = users.generateToken(user);
-    console.log('1111uuuuser',user,'toooooooooooooken',token);
-    return [user, token];
-  }else{
-    let user = await users.schema.save(userRecord);
-    let token = users.generateToken(user);
-    console.log('2222uuuuser',user,'toooooooooooooken',token);
-
-    return [user, token];
-
-  }
+  let token = users.generateToken(user);
+  console.log('1111uuuuser',user,'toooooooooooooken',token);
+  return [user, token];
+  
 }
+

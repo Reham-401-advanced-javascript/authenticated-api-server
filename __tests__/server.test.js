@@ -7,7 +7,7 @@ const mockRequest = supergoose(server);
 // 200 
 describe('sever', () => {
 
-  it('should respond with 200 on /api/v1/categories', () => {
+  it('should respond with 200 on /api/v1/categories', () => {///////////////////////
     return mockRequest.get('/api/v1/categories').then((results) => {
       expect(results.status).toBe(200);
     });
@@ -18,7 +18,7 @@ describe('sever', () => {
   // products rout 
   //-----------------------------------------------------------------------------------
 
-  it('should respond to a get request to /api/v1/products', () => {
+  it('should respond to a get request to /api/v1/products', () => {///////////////////////////
     let obj = { category: 'accessories', name: 'reham', display_name: 'lab7', description: 'cover this wide headband' };
     return mockRequest.post('/api/v1/products')
       .send(obj)
@@ -37,7 +37,7 @@ describe('sever', () => {
   });
 
   
-  it('should respond to a get request to /api/v1/products/id', () => {
+  it('should respond to a get request to /api/v1/products/id', () => {/////////////////////
     let obj = { category: 'accessories', name: 'reham', display_name: 'lab7', description: 'cover this wide headband' };
     return mockRequest.post('/api/v1/products')
       .send(obj)
@@ -57,7 +57,7 @@ describe('sever', () => {
   });
 
 
-  it('should respond to a post request to /api/v1/products', () => {
+  it('should respond to a post request to /api/v1/products', () => {////////////////////////
     let obj = { category: 'accessories', name: 'reham', display_name: 'lab7', description: 'cover this wide headband' };
     return mockRequest.post('/api/v1/products')
       .send(obj)
@@ -69,7 +69,7 @@ describe('sever', () => {
       });
   });
 
-  it('should respond to a put request to /api/v1/products/id', () => {
+  it('should respond to a put request to /api/v1/products/id', () => {////////////////////////////
     let obj = { category: 'accessories', name: 'reham', display_name: 'lab7', description: 'cover this wide headband' };
     return mockRequest.post('/api/v1/products')
       .send(obj)
@@ -113,7 +113,7 @@ describe('sever', () => {
   //-----------------------------------------------------------------------------------
  
 
-  it('should respond to a get request to /api/v1/categories', () => {
+  it('should respond to a get request to /api/v1/categories', () => {////////////////
     let obj = { name: 'accessories', display_name: 'accessories', description: 'big collection of modern accessories' };
     return mockRequest.post('/api/v1/categories')
       .send(obj)
@@ -127,7 +127,7 @@ describe('sever', () => {
   });
 
   
-  it('should respond to a get request to /api/v1/categories/id', () => {
+  it('should respond to a get request to /api/v1/categories/id', () => {///////////////////
     let obj = { name: 'accessories', display_name: 'accessories', description: 'big collection of modern accessories' };
 
     return mockRequest.post('/api/v1/categories')

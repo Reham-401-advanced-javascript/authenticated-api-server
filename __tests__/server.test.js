@@ -315,11 +315,10 @@ describe('Auth Model',()=>{
         'authorization':'reham:1234',
       },
     };
-    // let header2=header.headers;
     let header3=base64.encode(header.headers.authorization);
     // console.log('cccccccccccc',header3);
 
-    return mockRequest.post('/api/v1/signin').set({'authorization':header3})
+    return mockRequest.post('/api/v1/signin').set({'authorization':`Basic ${header3}`})
       .send(obj)
       .then(data=>{
         // console.log('nnnnnnnnnnnnn',data.body);
@@ -341,7 +340,7 @@ describe('Auth Model',()=>{
     let header3=base64.encode(header.headers.authorization);
     // console.log('333333333333',header3);
 
-    return mockRequest.get('/api/v1/users').set({'authorization':header3})
+    return mockRequest.get('/api/v1/users').set({'authorization':`Basic ${header3}`})
       .send(obj)
       .then(data=>{
 

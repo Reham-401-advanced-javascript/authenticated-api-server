@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Reham-401-advanced-javascript/authenticated-api-server#readme",
   "dependencies": {
+    "@code-fellows/supergoose": "^1.0.2",
     "base-64": "^0.1.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

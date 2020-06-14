@@ -16,9 +16,9 @@ module.exports = (req, res, next) => {
   } else {
     // user:pass
     const basic = req.headers.authorization.split(' ').pop(); // ["Basic","m4e321$342"]
-    console.log('basic', basic);
+    // console.log('basic', basic);
     const [user, pass] = base64.decode(basic).split(':'); // "mahmoud:1234"
-    console.log('__BasicAuth__', user, pass);
+    // console.log('__BasicAuth__', user, pass);
     users
       .authenticateBasic(user, pass)
       .then((validUser) => {

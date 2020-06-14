@@ -59,32 +59,32 @@ class Model {
     return capabilities;
   }
   generateToken (user) {
-    console.log('user iin generate token',user);
-    console.log('user.username iin generate tooooooken',user.username);
+    // console.log('user iin generate token',user);
+    // console.log('user.username iin generate tooooooken',user.username);
 
     if(user.username){
 
       let capabilities= this.capability(user.role);
       const userData = { username: user.username, role: user.role ,capabilities: capabilities };
       const token = jwt.sign(userData, SECRET,{expiresIn:60*15});//{expiresIn:60*15 to convert 15 min to second}
-      console.log('111token in generat',token);
+      // console.log('111token in generat',token);
       return token;
     }else{
       let capabilities= this.capability(user[0].role);
       const userData = { username: user[0].username, role: user[0].role ,capabilities: capabilities };
       const token = jwt.sign(userData, SECRET,{expiresIn:60*15});
-      console.log('222token in generat',token);
+      // console.log('222token in generat',token);
 
       return token;
     }
   }
 
   async authenticateToken (token) {
-    console.log('ttttttttttttoken',token);
+    // console.log('ttttttttttttoken',token);
     // akjsndlaksnd.34naliendiasnd.3nksabndfw334ng
     try {
       const tokenObject = await jwt.verify(token, SECRET);
-      console.log('toooooooookenobject',tokenObject);
+      // console.log('toooooooookenobject',tokenObject);
       // tokenObject = {username:"mahmoud",iat:91223238}
       
       if (tokenObject.username) {

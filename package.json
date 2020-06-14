@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "jest --coverage ",
+    "lint": "eslint '**/*.js'",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,7 @@
   },
   "devDependencies": {
     "eslint": "^7.2.0",
+    "eslint-plugin-html": "^6.0.2",
     "jest": "^26.0.1",
     "lint": "^0.7.0"
   }

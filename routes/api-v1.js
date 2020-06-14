@@ -120,12 +120,12 @@ function deleteHandler(req, res, next) {
 }
 
 function signup(req,res){
- console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+  console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
 
   users
     .saveUser(req.body)
     .then((user) => {
-     console.log('rrrrrrrrrrrrrbbrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+      console.log('rrrrrrrrrrrrrbbrrrrrrrrrrrrrrrrrrrrrrrrrrr');
 
       // console.log('mmmm,mmmm',user);
       const token = users.generateToken(user);

@@ -6,6 +6,11 @@
 const express = require('express');
 const Categories = require('../lib/models/categories/categories-model.js');
 const products = require('../lib/models/products/products-model.js');
+const bearerAuth = require('../src/auth/middleware/bearer.js');
+const permissions = require('../src/auth/middleware/authorize.js');
+const basicAuth = require('../src/auth/middleware/basic.js');
+const oauth = require('../src/auth/middleware/oauth.js');
+const users = require('../src/auth/models/users-model.js');
 const router = express.Router();
 router.param('model', getModel);
 
@@ -32,11 +37,16 @@ function getModel(req, res, next) {
     return;
   }
 }
-router.post('/:model', postHandler);
-router.get('/:model', getAllHandler);
-router.get('/:model/:id', getOneHandler);
-router.put('/:model/:id', updateHandler);
-router.delete('/:model/:id', deleteHandler);
+router.post('/signup',signup);
+router.post('/signin', basicAuth,signin);
+router.get('/users', basicAuth ,user);
+router.get('/oauth', oauth,oauthentication);
+
+router.post('/:model',bearerAuth, permissions('create'), postHandler);
+router.get('/:model',bearerAuth, permissions('read'), getAllHandler);
+router.get('/:model/:id',bearerAuth, permissions('read'), getOneHandler);
+router.put('/:model/:id',bearerAuth, permissions('update'), updateHandler);
+router.delete('/:model/:id',bearerAuth, permissions('delete'), deleteHandler);
 
 /**
  * postHandler function will create an object for the request data
@@ -108,4 +118,29 @@ function deleteHandler(req, res, next) {
     .then((data) => res.status(200).json(data))
     .catch((err) => next(err.message));
 }
+
+function signup(req,res){
+  users
+    .saveUser(req.body)
+    .then((user) => {
+      const token = users.generateToken(user);
+      res.json({ token });
+    })
+    .catch((err) => res.status(403).send(err.message));
+}
+
+function signin (req,res){
+  res.json({ token: req.token });
+}
+
+async function user(req,res){
+  // console.log('bbbbbbbbbbbb',req.body);
+  res.json(await users.list());
+
+}
+function oauthentication(req,res){
+  console.log('ooooooooauth',req.token);
+  res.json({ token: req.token  , user:req.user});
+}
+
 module.exports = router;

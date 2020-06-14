@@ -120,13 +120,9 @@ function deleteHandler(req, res, next) {
 }
 
 function signup(req,res){
-  console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
-
   users
     .saveUser(req.body)
     .then((user) => {
-      console.log('rrrrrrrrrrrrrbbrrrrrrrrrrrrrrrrrrrrrrrrrrr');
-
       // console.log('mmmm,mmmm',user);
       const token = users.generateToken(user);
       res.json({ token });
@@ -144,7 +140,7 @@ async function user(req,res){
 
 }
 function oauthentication(req,res){
-  console.log('ooooooooauth',req.token);
+  // console.log('ooooooooauth',req.token);
   res.json({ token: req.token  , user:req.user});
 }
 

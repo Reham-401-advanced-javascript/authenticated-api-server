@@ -3,7 +3,7 @@
 const URL = 'https://github.com/login/oauth/authorize';
 
 const options = {
-  client_id: '136d8b7e0763a67a587d', 
+  client_id: 'd7b9611f8db305cf581c', 
   scope: 'read:user',
   state: '401 demo ask for user consent',
 };

@@ -147,7 +147,7 @@ describe('sever', () => {
     
   });
 
-  it('should respond to a post request to /api/v1/categories', () => {
+  it('should respond to a post request to /api/v1/categories', () => {////////////////////
     let obj = { name: 'accessories', display_name: 'accessories', description: 'big collection of modern accessories' };
     return mockRequest.post('/api/v1/categories')
       .send(obj)
@@ -158,7 +158,7 @@ describe('sever', () => {
       });
   });
 
-  it('should respond to a put request to /api/v1/categories/id', () => {
+  it('should respond to a put request to /api/v1/categories/id', () => {///////////////////////////////
     let obj = { name: 'accessories', display_name: 'accessories', description: 'big collection of modern accessories' };
     return mockRequest.post('/api/v1/categories')
       .send(obj)

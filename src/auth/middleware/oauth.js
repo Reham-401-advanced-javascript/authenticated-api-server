@@ -33,16 +33,34 @@ module.exports = async (req, res, next) => {
   }
 };
 
-async function exchangeCodeForToken(code) {
-  const tokenResponse = await superagent.post(tokenServerUrl).send({
+// async function exchangeCodeForToken(code) {
+//   console.log('coooooooooooodeiiiiiiiid',CLIENT_ID);
+//   const tokenResponse = await superagent.post(tokenServerUrl).send({
+//     code: code,
+//     client_id: CLIENT_ID,
+//     client_secret: CLIENT_SECRET,
+//     redirect_uri: API_SERVER,
+//     grant_type: 'authorization_code',
+//   });
+//   console.log('toooooooken reeeeees',tokenResponse);
+//   const access_token = tokenResponse.body.access_token;
+//   return access_token;
+// }
+function exchangeCodeForToken(code) {
+  console.log('coooooooooooodeiiiiiiiid',CLIENT_ID);
+  return superagent.post(tokenServerUrl).send({
     code: code,
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
     redirect_uri: API_SERVER,
     grant_type: 'authorization_code',
-  });
-  const access_token = tokenResponse.body.access_token;
-  return access_token;
+  })
+    .then(tokenResponse => {
+      console.log('toooooooken reeeeees',tokenResponse.body);
+      const access_token = tokenResponse.body.access_token;
+      return access_token;
+    })
+    .catch(e => console.log(e));
 }
 
 async function getRemoteUserInfo(token) {

@@ -1,0 +1,226 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "defaultDescription",
+    "version" : "0.1",
+    "title" : "defaultTitle"
+  },
+  "paths" : {
+    "/categories/1" : {
+      "put" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Model1"
+          },
+          "x-examples" : {
+            "application/json" : "{\n     \"category\": \"bags\",\n        \"name\": \"CLUTCH BAG\",\n        \"display_name\": \"GLITTER ENVELOPE CLUTCH BAG\",\n        \"description\": \"An ultra-fine glitter coating gives this streamlined style a sophisticated sparkle, and if features a slinky chain strap that can be tucked inside. It fastens with a magnet clasp and has a chic satin lining.\"\n     \n}"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model3"
+            }
+          }
+        }
+      }
+    },
+    "/categories/2" : {
+      "patch" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model4"
+            }
+          }
+        }
+      }
+    },
+    "/categories/" : {
+      "post" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Model0"
+          },
+          "x-examples" : {
+            "application/json" : "{\n    \n     \"name\": \"chair\",\n        \"display_name\": \"chair\",\n        \"description\": \"big collection of chairs\"\n    \n}"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model5"
+            }
+          }
+        }
+      }
+    },
+    "/categories/3" : {
+      "delete" : {
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Model2"
+          },
+          "x-examples" : {
+            "application/json" : "{\n    \n     \"name\": \"chair\",\n        \"display_name\": \"chair\",\n        \"description\": \"big collection of chairs\"\n    \n}"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model6"
+            }
+          }
+        }
+      }
+    },
+    "/products" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Definition generated from Swagger Inspector",
+            "schema" : {
+              "$ref" : "#/definitions/Model7"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Model0" : {
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model1" : {
+      "properties" : {
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model2" : {
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model3" : {
+      "properties" : {
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Model4" : {
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "_id" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Model5" : {
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "_id" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "Model6" : { },
+    "Count" : { },
+    "Array" : {
+      "properties" : {
+        "count" : {
+          "$ref" : "#/definitions/Count"
+        },
+        "results" : {
+          "type" : "array"
+        }
+      }
+    },
+    "Model7" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Array"
+      }
+    }
+  }
+}

@@ -46,6 +46,7 @@ router.post('/:model',bearerAuth, permissions('create'), postHandler);
 router.get('/:model',bearerAuth, permissions('read'), getAllHandler);
 router.get('/:model/:id',bearerAuth, permissions('read'), getOneHandler);
 router.put('/:model/:id',bearerAuth, permissions('update'), updateHandler);
+router.patch('/:model/:id',bearerAuth, permissions('update'), updateHandler);
 router.delete('/:model/:id',bearerAuth, permissions('delete'), deleteHandler);
 
 /**

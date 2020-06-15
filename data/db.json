@@ -1,0 +1,40 @@
+{
+    "categories": [
+        {
+            "count": {},
+            "results": []
+        },
+        {
+            "name": "accessories",
+            "display_name": "accessories",
+            "description": "big collection of modern accessories",
+            "_id": 1
+        },
+        {
+            "name": "bags",
+            "display_name": "bags",
+            "description": "big collection of bags",
+            "_id": 2
+        }
+    ],
+    "products": [
+        {
+            "count": {},
+            "results": []
+        },
+        {
+            "category": "accessories",
+            "name": "PEARLY BRIDAL PADDED HEADBAND",
+            "display_name": "PEARLY BRIDAL PADDED HEADBAND",
+            "description": "Faux pearls cover this wide headband, with a lightly padded top and woven fabric underside.",
+            "_id": 1
+        },
+        {
+            "category": "bags",
+            "name": "GLITTER ENVELOPE CLUTCH BAG",
+            "display_name": "GLITTER ENVELOPE CLUTCH BAG",
+            "description": "An ultra-fine glitter coating gives this streamlined style a sophisticated sparkle, and if features a slinky chain strap that can be tucked inside. It fastens with a magnet clasp and has a chic satin lining.",
+            "_id": 2
+        }
+    ]
+}
